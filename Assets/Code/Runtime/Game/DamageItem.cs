@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Code.Runtime.Game
 {
-    public class DamageItem : Item, ITargeting
+    public class DamageItem : Item, ITargeting, IRanged
     {
         public int baseDamageStrength;
         public float range;
+        public float GetRange() => range;
         public void UseOn(ITargetable target)
         {
             if (timeSinceLastUse >= useCooldown)

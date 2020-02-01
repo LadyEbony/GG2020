@@ -25,14 +25,52 @@ namespace Code.Runtime.Game
             return hammer;
         }
 
-        public static DamageItem Attack(GameObject owner)
+        public static RepairItem Nailgun(GameObject owner)
+        {
+            RepairItem nailgun = owner.AddComponent<RepairItem>();
+            nailgun.name = "Nailgun";
+            nailgun.baseRepairStength = 3;
+            nailgun.useCooldown = TimeSpan.FromMilliseconds(500);
+            nailgun.range = 6;
+            return nailgun;
+        }
+
+        public static DamageItem MeleeAttack(GameObject owner)
         {
             DamageItem attack = owner.AddComponent<DamageItem>();
-            attack.name = "Attack";
+            attack.name = "Melee Attack";
             attack.baseDamageStrength = 25;
-            attack.useCooldown = TimeSpan.FromMilliseconds(1000);
+            attack.useCooldown = TimeSpan.FromMilliseconds(700);
             attack.range = 3;
             return attack;
+        }
+        public static DamageItem RangedAttack(GameObject owner)
+        {
+            DamageItem attack = owner.AddComponent<DamageItem>();
+            attack.name = "Ranged Attack";
+            attack.baseDamageStrength = 10;
+            attack.useCooldown = TimeSpan.FromMilliseconds(1200);
+            attack.range = 10;
+            return attack;
+        }
+
+        public static Item SelectByName(GameObject owner, string name)
+        {
+            switch (name)
+            {
+                case "Hammer":
+                    return Hammer(owner);
+                case "Nailgun":
+                    return Nailgun(owner);
+                case "Mortar":
+                    return Mortar(owner);
+                case "Melee Attack":
+                    return MeleeAttack(owner);
+                case "Ranged Attack":
+                    return RangedAttack(owner);
+                default:
+                    return null;
+            }
         }
     }
 }

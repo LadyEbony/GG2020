@@ -6,8 +6,12 @@ namespace Code.Runtime.Game.Interfaces
     {
         public void Start()
         {
-            DamageItem attack = ItemFactory.Attack(gameObject);
-            item = attack;
+            DamageItem meleeAttack = ItemFactory.MeleeAttack(gameObject);
+            Items.Add(meleeAttack);
+            item = meleeAttack;
+            currentRange = meleeAttack.range;
+            DamageItem rangedAttack = ItemFactory.RangedAttack(gameObject);
+            Items.Add(rangedAttack);
         }
     }
 }

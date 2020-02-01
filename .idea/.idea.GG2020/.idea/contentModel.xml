@@ -27,6 +27,7 @@
               <e p="Heldable.cs" t="Include" />
               <e p="Interfaces" t="Include">
                 <e p="IDamageable.cs" t="Include" />
+                <e p="IRanged.cs" t="Include" />
                 <e p="IRepairable.cs" t="Include" />
                 <e p="ITargetable.cs" t="Include" />
                 <e p="ITargeting.cs" t="Include" />
@@ -34,6 +35,7 @@
               </e>
               <e p="Item.cs" t="Include" />
               <e p="ItemFactory.cs" t="Include" />
+              <e p="Pickup.cs" t="Include" />
               <e p="Player.cs" t="Include" />
               <e p="RepairItem.cs" t="Include" />
               <e p="Structure.cs" t="Include" />

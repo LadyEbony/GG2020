@@ -10,8 +10,9 @@ namespace Code.Runtime.Game
             RepairItem hammer = ItemFactory.Hammer(gameObject);
             Items.Add(hammer);
             item = hammer;
-            RepairItem mortar = ItemFactory.Mortar(gameObject);
-            Items.Add(mortar);
+            currentRange = hammer.range;
+            // RepairItem mortar = ItemFactory.Mortar(gameObject);
+            // Items.Add(mortar);
         }
     }
 }

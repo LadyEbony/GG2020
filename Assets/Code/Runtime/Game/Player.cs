@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Game.Interfaces;
 using UnityEngine;
@@ -14,6 +15,16 @@ namespace Code.Runtime.Game
         public ITargetable Target;
 
         public Heldable item;
+
+        [HideInInspector]
+        public BuilderDriver driver;
+
+        public float currentRange;
+
+        public void Start()
+        {
+            currentRange = 0;
+        }
 
         public void Update()
         {
@@ -43,6 +54,10 @@ namespace Code.Runtime.Game
                 {
                     heldItemIndex = (heldItemIndex + 1) % Items.Count;
                     item = Items[heldItemIndex];
+                    if(item is IRanged)
+                    {
+                        currentRange = (item as IRanged).GetRange();
+                    }
                 }
             }
             else if (Input.mouseScrollDelta.y < 0)
@@ -54,8 +69,11 @@ namespace Code.Runtime.Game
                     {
                         heldItemIndex = Items.Count - 1;
                     }
-
                     item = Items[heldItemIndex];
+                    if(item is IRanged)
+                    {
+                        currentRange = (item as IRanged).GetRange();
+                    }
                 }
             }
         }
