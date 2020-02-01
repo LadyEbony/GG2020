@@ -26,29 +26,14 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
   [Header("Helds")]
   public Heldable item;
 
-  public List<Heldable> Items;
-
-  public int heldItemIndex;
-
-  public ITargetable Target;
-
   public GameObject TestTarget;
 
-  private void Start()
-  {
-    RepairItem hammer = gameObject.AddComponent<RepairItem>();
-    hammer.name = "Hammer";
-    hammer.baseRepairStength = 5;
-    hammer.useCooldown = TimeSpan.FromMilliseconds(500);
-    Items.Add(hammer);
-    item = hammer;
-    RepairItem mortar = gameObject.AddComponent<RepairItem>();
-    mortar.name = "Mortar";
-    mortar.baseRepairStength = 20;
-    mortar.useCooldown = TimeSpan.FromMilliseconds(1000);
-    Items.Add(mortar);
-  }
+  private Player player;
 
+  void Start()
+  {
+    player = gameObject.AddComponent<Fixer>();
+  }
   // Update is called once per frame
   void Update(){
     if (isMine){
@@ -59,7 +44,7 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
 
     if (TestTarget)
     {
-      Target = TestTarget.GetComponent<Structure>();
+      player.Target = TestTarget.GetComponent<Structure>();
     }
   }
 
@@ -72,44 +57,6 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
     nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
 
     position = transform.position;
-
-    // items
-    if (Input.GetMouseButtonDown(0))
-      if (Target != null)
-      {
-        if (item is ITargeting)
-        {
-          (item as ITargeting).UseOn(Target);
-        }
-        else
-        {
-          item?.Use();
-        }
-      }
-      else
-      {
-        item?.Use();
-      }
-    if (Input.mouseScrollDelta.y > 0)
-    {
-      if (Items.Any())
-      {
-        heldItemIndex = (heldItemIndex + 1) % Items.Count;
-        item = Items[heldItemIndex];
-      }
-    }
-    else if (Input.mouseScrollDelta.y < 0)
-    {
-      if (Items.Any())
-      {
-        heldItemIndex = (heldItemIndex - 1);
-        if (heldItemIndex < 0)
-        {
-          heldItemIndex = Items.Count - 1;
-        }
-        item = Items[heldItemIndex];
-      }
-    }
   }
 
   /// <summary>

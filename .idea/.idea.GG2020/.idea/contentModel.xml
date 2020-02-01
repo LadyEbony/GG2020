@@ -22,6 +22,7 @@
             <e p="Game" t="Include">
               <e p="BuilderDriver.cs" t="Include" />
               <e p="DamageItem.cs" t="Include" />
+              <e p="Fixer.cs" t="Include" />
               <e p="GameHelper.cs" t="Include" />
               <e p="Heldable.cs" t="Include" />
               <e p="Interfaces" t="Include">
@@ -31,6 +32,7 @@
                 <e p="ITargeting.cs" t="Include" />
               </e>
               <e p="Item.cs" t="Include" />
+              <e p="Player.cs" t="Include" />
               <e p="RepairItem.cs" t="Include" />
               <e p="Structure.cs" t="Include" />
             </e>
