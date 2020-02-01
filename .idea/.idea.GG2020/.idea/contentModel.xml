@@ -21,6 +21,7 @@
             </e>
             <e p="Game" t="Include">
               <e p="BuilderDriver.cs" t="Include" />
+              <e p="DamageItem.cs" t="Include" />
               <e p="GameHelper.cs" t="Include" />
               <e p="Heldable.cs" t="Include" />
               <e p="Interfaces" t="Include">

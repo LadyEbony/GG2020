@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Code.Runtime.Game
 {
-    public class RepairItem : Item, ITargeting
+    public class DamageItem : Item, ITargeting
     {
-        public int baseRepairStength;
+        public int baseDamageStrength;
         public void UseOn(ITargetable target)
         {
             if (timeSinceLastUse >= useCooldown)
@@ -14,8 +14,8 @@ namespace Code.Runtime.Game
                 timeSinceLastUse = TimeSpan.Zero;
                 if (target is IRepairable)
                 {
-                    (target as IRepairable).Repair(baseRepairStength);
-                    Debug.Log($"Repairing {target} for {baseRepairStength}");
+                    (target as IRepairable).Repair(baseDamageStrength);
+                    Debug.Log($"Repairing {target} for {baseDamageStrength}");
                 }
             }
         }
