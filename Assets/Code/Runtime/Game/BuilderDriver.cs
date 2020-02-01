@@ -1,5 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Code.Runtime.Game;
+using Code.Runtime.Game.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 using EntityNetwork;
@@ -22,12 +26,31 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
   [Header("Helds")]
   public Heldable item;
 
+  public List<Heldable> Items;
+
+  public int heldItemIndex;
+
+  public ITargetable Target;
+
+  public GameObject TestTarget;
+
+  private void Start()
+  {
+    item = new Hammer();
+    Items.Add(item);
+  }
+
   // Update is called once per frame
   void Update(){
     if (isMine){
       LocalUpdate();
     } else {
       RemoteUpdate();
+    }
+
+    if (TestTarget)
+    {
+      Target = TestTarget.GetComponent<Structure>();
     }
   }
 
@@ -43,7 +66,29 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
 
     // items
     if (Input.GetMouseButtonDown(0))
-      item?.Use();
+      if (Target != null)
+      {
+        if (item is ITargeting)
+        {
+          (item as ITargeting).UseOn(Target);
+        }
+        else
+        {
+          item?.Use();
+        }
+      }
+      else
+      {
+        item?.Use();
+      }
+    if (Input.mouseScrollDelta.y > 0)
+    {
+      if (Items.Any())
+      {
+        heldItemIndex = (heldItemIndex + 1) % Items.Count;
+        item = Items[heldItemIndex];
+      }
+    }
   }
 
   /// <summary>
