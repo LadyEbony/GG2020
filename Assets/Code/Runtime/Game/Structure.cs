@@ -11,6 +11,8 @@ public class Structure : MonoBehaviour, IRepairable, IDamageable
 
     public new string name;
 
+    public GameObject GetTarget() => gameObject;
+
     public int CurrentHealth
     {
         get { return currentHealth; }

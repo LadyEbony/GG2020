@@ -32,7 +32,7 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
 
   void Start()
   {
-    player = gameObject.AddComponent<Fixer>();
+    player = gameObject.AddComponent<Monster>();
   }
   // Update is called once per frame
   void Update(){

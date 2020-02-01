@@ -11,12 +11,14 @@ namespace Code.Runtime.Game
             hammer.name = "Hammer";
             hammer.baseRepairStength = 5;
             hammer.useCooldown = TimeSpan.FromMilliseconds(500);
+            hammer.range = 2;
             Items.Add(hammer);
             item = hammer;
             RepairItem mortar = gameObject.AddComponent<RepairItem>();
             mortar.name = "Mortar";
             mortar.baseRepairStength = 20;
             mortar.useCooldown = TimeSpan.FromMilliseconds(1000);
+            mortar.range = 2;
             Items.Add(mortar);
         }
     }

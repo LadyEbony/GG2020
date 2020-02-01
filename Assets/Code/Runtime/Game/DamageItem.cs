@@ -7,15 +7,23 @@ namespace Code.Runtime.Game
     public class DamageItem : Item, ITargeting
     {
         public int baseDamageStrength;
+        public float range;
         public void UseOn(ITargetable target)
         {
             if (timeSinceLastUse >= useCooldown)
             {
                 timeSinceLastUse = TimeSpan.Zero;
-                if (target is IRepairable)
+                if (target is IDamageable)
                 {
-                    (target as IRepairable).Repair(baseDamageStrength);
-                    Debug.Log($"Repairing {target} for {baseDamageStrength}");
+                    if ((target.GetTarget().transform.position - gameObject.transform.position).magnitude < range)
+                    {
+                        (target as IDamageable).Damage(baseDamageStrength);
+                        Debug.Log($"Damaging {target} for {baseDamageStrength}");
+                    }
+                    else
+                    {
+                        Debug.Log($"{target} is out of range");
+                    }
                 }
             }
         }
