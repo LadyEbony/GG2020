@@ -36,8 +36,17 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
 
   private void Start()
   {
-    item = new Hammer();
-    Items.Add(item);
+    RepairItem hammer = gameObject.AddComponent<RepairItem>();
+    hammer.name = "Hammer";
+    hammer.baseRepairStength = 5;
+    hammer.useCooldown = TimeSpan.FromMilliseconds(500);
+    Items.Add(hammer);
+    item = hammer;
+    RepairItem mortar = gameObject.AddComponent<RepairItem>();
+    mortar.name = "Mortar";
+    mortar.baseRepairStength = 20;
+    mortar.useCooldown = TimeSpan.FromMilliseconds(1000);
+    Items.Add(mortar);
   }
 
   // Update is called once per frame
@@ -86,6 +95,18 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
       if (Items.Any())
       {
         heldItemIndex = (heldItemIndex + 1) % Items.Count;
+        item = Items[heldItemIndex];
+      }
+    }
+    else if (Input.mouseScrollDelta.y < 0)
+    {
+      if (Items.Any())
+      {
+        heldItemIndex = (heldItemIndex - 1);
+        if (heldItemIndex < 0)
+        {
+          heldItemIndex = Items.Count - 1;
+        }
         item = Items[heldItemIndex];
       }
     }

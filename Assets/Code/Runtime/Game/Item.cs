@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item : Heldable
 {
-    public string Name;
+    public string name;
     public override void Use()
     {
         

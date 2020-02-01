@@ -5,20 +5,20 @@ using Code.Runtime.Game.Interfaces;
 
 public class Structure : MonoBehaviour, IRepairable, IDamageable
 {
-    public int StartingHealth;
+    public int startingHealth;
 
-    public int MaxHealth;
+    public int maxHealth;
 
-    public string Name;
+    public new string name;
 
     public int CurrentHealth
     {
         get { return currentHealth; }
         set
         {
-            if (value >= MaxHealth)
+            if (value >= maxHealth)
             {
-                currentHealth = MaxHealth;
+                currentHealth = maxHealth;
             }
             else if (value <= 0)
             {
@@ -37,7 +37,7 @@ public class Structure : MonoBehaviour, IRepairable, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        CurrentHealth = StartingHealth;
+        CurrentHealth = startingHealth;
     }
 
     // Update is called once per frame
@@ -58,12 +58,13 @@ public class Structure : MonoBehaviour, IRepairable, IDamageable
 
     void Die()
     {
-        Debug.Log($"{Name} broke.");
+        Debug.Log($"{name} broke.");
     }
 
     void UpdateVisualDamage()
     {
-        gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.Lerp(Color.red, Color.white, (float)CurrentHealth / MaxHealth));
+        gameObject.GetComponent<Renderer>().material
+            .SetColor("_Color", Color.Lerp(Color.red, Color.white, (float)CurrentHealth / maxHealth));
     }
     
     
