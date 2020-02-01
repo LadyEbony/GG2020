@@ -6,10 +6,7 @@ namespace Code.Runtime.Game.Interfaces
     {
         public void Start()
         {
-            DamageItem attack = gameObject.AddComponent<DamageItem>();
-            attack.baseDamageStrength = 25;
-            attack.useCooldown = TimeSpan.FromMilliseconds(1000);
-            attack.range = 3;
+            DamageItem attack = ItemFactory.Attack(gameObject);
             item = attack;
         }
     }
