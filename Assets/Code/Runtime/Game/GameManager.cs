@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         if (destroyer != null && IsScreenPointOnScreen(MainCamera.WorldToViewportPoint(destroyer.transform.position)))
         {
-            destroyerScript.ShowHealth(HealthBars[destroyer]);
+            destroyerScript.ShowHealth(HealthBars[destroyer], MainCamera);
         }
         if (builders != null)
         {
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             {
                 if (IsScreenPointOnScreen(MainCamera.WorldToViewportPoint(builders[i].transform.position)))
                 {
-                    builderScripts[i].ShowHealth(HealthBars[builders[i]]);
+                    builderScripts[i].ShowHealth(HealthBars[builders[i]], MainCamera);
                 }
             }
         }
@@ -96,8 +96,7 @@ public class GameManager : MonoBehaviour
             {
                 if (IsScreenPointOnScreen(MainCamera.WorldToViewportPoint(structures[i].transform.position)))
                 {
-                    structureScripts[i].ShowHealth(HealthBars[structures[i]]);
-                    HealthBars[structures[i]].GetComponent<RectTransform>().anchoredPosition = MainCamera.WorldToScreenPoint(structures[i].transform.position);
+                    structureScripts[i].ShowHealth(HealthBars[structures[i]], MainCamera);
                 }
             }
         }

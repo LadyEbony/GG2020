@@ -157,7 +157,7 @@ namespace Code.Runtime.Game
             RaiseEvent('d', true, damageAmount);    
         }
 
-        public void ShowHealth(GameObject HealthBar)
+        public void ShowHealth(GameObject HealthBar, Camera camera)
         {
             throw new NotImplementedException();
         }
