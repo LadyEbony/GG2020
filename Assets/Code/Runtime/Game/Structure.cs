@@ -13,6 +13,9 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
   public float damageShakeAmount;   // Amount of translational shake applied
   public float damageShakeDuration; // Time of translational shake
   private float damageShakeTimeLeft;// Time before shaking stops
+  public AudioSource repairAudio;
+  public AudioSource damageAudio;
+  public AudioSource deathAudio;
 
   [Header("Structure Stats")]
   public int startingHealth;
@@ -69,6 +72,7 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
 
   [NetEvent('r')]
   private void NetRepair(int repairAmount){
+    repairAudio.Play();
     if (NetworkManager.isMaster)
     {
       currentHealth += repairAmount;
@@ -83,6 +87,7 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
 
   [NetEvent('d')]
   private void NetDamage(int damageAmount){
+    damageAudio.Play();
     ResetDamageShakeTimer();
     if (NetworkManager.isMaster)
     {
@@ -93,6 +98,7 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
   }
 
   void Die(){
+    deathAudio.Play();
     Debug.Log($"{name} broke.");
     GameObject brokenInstance = Instantiate(brokenModel, intactModel.transform.position, intactModel.transform.rotation);
     brokenInstance.SetActive(true);
