@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Code.Runtime.Game.Interfaces;
-using EntityNetwork;
+using EntityNetwork; 
 
-public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAutoRegister, IMasterOwnsUnclaimed, IRepairable, IDamageable {
+public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAutoRegister, IMasterOwnsUnclaimed, IRepairable, IDamageable, IShowHealth {
   
   [Header("Structure Stats")]
   public int startingHealth;
@@ -69,6 +70,12 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
     gameObject.GetComponent<Renderer>().material
         .SetColor("_Color", Color.Lerp(Color.red, Color.white, (float)currentHealth / maxHealth));
   }
-    
-    
+
+    public void ShowHealth(GameObject HealthBar)
+    {
+        Slider bar = HealthBar.GetComponent<Slider>();
+        bar.minValue = 0;
+        bar.maxValue = maxHealth;
+        bar.value = currentHealth;
+    }
 }

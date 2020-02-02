@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Game
 {
-    public class Player : EntityBase, ITargetable, IDamageable
+    public class Player : EntityBase, ITargetable, IDamageable, IShowHealth
     {
         
         public List<Heldable> Items = new List<Heldable>();
@@ -174,6 +174,11 @@ namespace Code.Runtime.Game
         public void Damage(int damageAmount)
         {    
             RaiseEvent('d', true, damageAmount);    
+        }
+
+        public void ShowHealth(GameObject HealthBar)
+        {
+            throw new NotImplementedException();
         }
     }
 }
