@@ -1150,8 +1150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - name: Builder
-    outlineColor: {r: 0, g: 1, b: 0, a: 1}
-    innerColor: {r: 0, g: 0.40392157, b: 0, a: 1}
+    outlineColor: {r: 0, g: 1, b: 1, a: 1}
+    innerColor: {r: 0, g: 0.044528212, b: 0.40392157, a: 1}
     fullSprite: {fileID: 21300000, guid: 980748c7571049c48b60355bd9fabff1, type: 3}
     headSprite: {fileID: 21300000, guid: 980748c7571049c48b60355bd9fabff1, type: 3}
   - name: Kaiju
