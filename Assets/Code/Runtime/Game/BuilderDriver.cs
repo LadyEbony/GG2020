@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using EntityNetwork;
 
-public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAutoRegister, IMasterOwnsUnclaimed {
+public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
 
   // Any variable with [NetVar]
   // Will be sent to all clients based on the parameters
@@ -56,6 +56,7 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
   }
   // Update is called once per frame
   void Update(){
+    Debug.Log(PlayerProperties.localPlayer.ID);
     if (isMine){
       LocalUpdate();
     } else {
@@ -70,7 +71,8 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
     // movement
     Vector3 steering = GameHelper.GetDirectionInput;
     nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
-    position = transform.position;
+    Debug.Log(steering);
+    //position = transform.position;
     lineRenderer.SetPositions(new []
     {
       gameObject.transform.position,
