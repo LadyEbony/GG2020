@@ -9,6 +9,7 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
   
   [Header("Stuff")]
   public Transform shakeContainer;
+  public Transform HealthBarOffset;
   public GameObject intactModel;
   public GameObject brokenModel;
   public float damageShakeAmount;   // Amount of translational shake applied
@@ -141,11 +142,12 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
     material.SetColor("_Color", color);
   }
 
-    public void ShowHealth(GameObject HealthBar)
+    public void ShowHealth(GameObject HealthBar, Camera camera)
     {
         Slider bar = HealthBar.GetComponent<Slider>();
         bar.minValue = 0;
         bar.maxValue = maxHealth;
         bar.value = currentHealth;
+        HealthBar.GetComponent<RectTransform>().anchoredPosition = camera.WorldToScreenPoint(HealthBarOffset.position);
     }
 }
