@@ -238,18 +238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityID: 1001
   authorityID: -1
-  shakeContainer: {fileID: 0}
-  intactModel: {fileID: 0}
-  brokenModel: {fileID: 0}
-  damageShakeAmount: 0
-  damageShakeDuration: 0
-  repairAudio: {fileID: 0}
-  damageAudio: {fileID: 0}
-  deathAudio: {fileID: 0}
   startingHealth: 150
   maxHealth: 200
   _currentHealth: 0
-  currStructureState: 1
 --- !u!135 &498660925
 SphereCollider:
   m_ObjectHideFlags: 0
