@@ -26,13 +26,38 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
   [Header("Helds")]
   public Heldable item;
 
-  public GameObject TestTarget;
+  public Player player;
 
-  private Player player;
+  private LineRenderer lineRenderer;
 
+  private float currentRange;
+
+  public enum PlayerTypes
+  {
+    Fixer,
+    Kaiju
+  }
+
+  public PlayerTypes playerType;
+  
   void Start()
   {
-    player = gameObject.AddComponent<Fixer>();
+    switch (playerType)
+    {
+      case PlayerTypes.Fixer:
+        player = gameObject.AddComponent<Fixer>();
+        break;
+      case PlayerTypes.Kaiju:
+        player = gameObject.AddComponent<Monster>();
+        break;
+    }
+    player.driver = this;
+    lineRenderer = gameObject.GetComponent<LineRenderer>();
+    lineRenderer.widthMultiplier = 0.2f;
+    lineRenderer.startColor = Color.white;
+    lineRenderer.endColor = Color.red;
+    lineRenderer.positionCount = 2;
+    
   }
   // Update is called once per frame
   void Update(){
@@ -40,11 +65,6 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
       LocalUpdate();
     } else {
       RemoteUpdate();
-    }
-
-    if (TestTarget)
-    {
-      player.Target = TestTarget.GetComponent<Structure>();
     }
   }
 
@@ -55,8 +75,25 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
     // movement
     var steering = GameHelper.GetDirectionInput;
     nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
-
     position = transform.position;
+    lineRenderer.SetPositions(new []
+    {
+      gameObject.transform.position,
+      gameObject.transform.position + gameObject.transform.forward * player.currentRange
+    });
+    RaycastHit hit;
+    Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, player.currentRange);
+    if (hit.rigidbody != null)
+    {
+      if (hit.rigidbody.CompareTag("Structure"))
+      {
+        player.Target = hit.rigidbody.gameObject.GetComponent<Structure>();
+      }
+    }
+    else
+    {
+      player.Target = null;
+    }
   }
 
   /// <summary>

@@ -4,9 +4,13 @@ using UnityEngine;
 
 namespace Code.Runtime.Game
 {
-    public class RepairItem : Item, ITargeting
+    public class RepairItem : Item, ITargeting, IRanged
     {
         public int baseRepairStength;
+        public float range;
+
+        public float GetRange() => range;
+
         public void UseOn(ITargetable target)
         {
             if (timeSinceLastUse >= useCooldown)
@@ -14,8 +18,11 @@ namespace Code.Runtime.Game
                 timeSinceLastUse = TimeSpan.Zero;
                 if (target is IRepairable)
                 {
-                    (target as IRepairable).Repair(baseRepairStength);
-                    Debug.Log($"Repairing {target} for {baseRepairStength}");
+                    if ((target.GetTarget().transform.position - gameObject.transform.position).magnitude < range)
+                    {
+                        (target as IRepairable).Repair(baseRepairStength);
+                        Debug.Log($"Repairing {target} for {baseRepairStength}");
+                    }
                 }
             }
         }
