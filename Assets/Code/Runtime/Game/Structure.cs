@@ -72,10 +72,8 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
     if (NetworkManager.isMaster)
     {
       currentHealth += repairAmount;
-      if (currentHealth >= maxHealth && currStructureState == false)
-      {
+      if (currentHealth >= maxHealth)
         currStructureState = true;
-      }
     }
   }
 
@@ -85,11 +83,11 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
 
   [NetEvent('d')]
   private void NetDamage(int damageAmount){
+    ResetDamageShakeTimer();
     if (NetworkManager.isMaster)
     {
-      ResetDamageShakeTimer();
       currentHealth -= damageAmount;
-      if (currentHealth <= 0 && currStructureState == true)
+      if (currentHealth <= 0)
         currStructureState = false;
     }
   }
