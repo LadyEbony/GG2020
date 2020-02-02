@@ -24,6 +24,7 @@
               <e p="DamageItem.cs" t="Include" />
               <e p="Fixer.cs" t="Include" />
               <e p="GameHelper.cs" t="Include" />
+              <e p="GameManager.cs" t="Include" />
               <e p="Heldable.cs" t="Include" />
               <e p="Interfaces" t="Include">
                 <e p="IDamageable.cs" t="Include" />
@@ -38,6 +39,7 @@
               <e p="Pickup.cs" t="Include" />
               <e p="Player.cs" t="Include" />
               <e p="RepairItem.cs" t="Include" />
+              <e p="SpawnPoint.cs" t="Include" />
               <e p="Structure.cs" t="Include" />
             </e>
             <e p="Localization" t="Include">
