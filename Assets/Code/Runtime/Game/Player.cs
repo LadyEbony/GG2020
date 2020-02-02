@@ -8,7 +8,6 @@ namespace Code.Runtime.Game
 {
     public class Player : EntityBase, ITargetable, IDamageable, IShowHealth
     {
-        
         public List<Heldable> Items = new List<Heldable>();
 
         public int heldItemIndex;

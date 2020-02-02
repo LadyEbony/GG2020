@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using EntityNetwork;
 
-public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAutoRegister, IMasterOwnsUnclaimed {
+public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
 
   // Any variable with [NetVar]
   // Will be sent to all clients based on the parameters
@@ -36,7 +36,10 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
   }
 
   public PlayerTypes playerType;
-  
+
+  [Header("Camera")]
+  public float cameraDistance;
+
   void Start()
   {
     gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -55,10 +58,17 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
     lineRenderer.startColor = Color.white;
     lineRenderer.endColor = Color.red;
     lineRenderer.positionCount = 2;
+
+    if (isMine){
+      var c = CameraThird.Instance;
+      c.player = transform.Find("Camera Target");
+      c.cameraDistance = cameraDistance;
+    }
     
   }
   // Update is called once per frame
   void Update(){
+    Debug.Log(PlayerProperties.localPlayer.ID);
     if (isMine){
       LocalUpdate();
     } else {

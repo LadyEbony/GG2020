@@ -124,13 +124,7 @@ public static class PlayerProperties  {
   /// </summary>
   public static readonly PlayerPropertyEntry<bool> gameStatus = new PlayerPropertyEntry<bool>("gs");
   
-  /// <summary>
-  /// Player's selected character.
-  /// </summary>
-  public static readonly PlayerPropertyEntry<int> playerCharacter = new PlayerPropertyEntry<int>("pc");
-  /// <summary>
-  /// Player's selected team.
-  /// </summary>
+  public static readonly PlayerPropertyEntry<int> playerTeamHovered = new PlayerPropertyEntry<int>("ph");
   public static readonly PlayerPropertyEntry<int> playerTeam = new PlayerPropertyEntry<int>("pt");
 
   /// <summary>
@@ -157,8 +151,8 @@ public static class PlayerProperties  {
     lobbyStatus.Initialilze(h, false);
     gameStatus.Initialilze(h, false);
 
-    playerCharacter.Initialilze(h, playerCharacter.GetPlayerPrefInt());
-    playerTeam.Initialilze(h, playerCharacter.GetPlayerPrefInt());
+    playerTeam.Initialilze(h, -1);
+    playerTeamHovered.Initialilze(h, -1);
 
     playerResponse.Initialilze(h, -1);
 
