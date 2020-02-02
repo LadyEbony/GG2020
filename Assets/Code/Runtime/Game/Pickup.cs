@@ -24,13 +24,23 @@ namespace Code.Runtime.Game{
       if (player != null){
         Debug.Log(player);
         if (monsterCanPickup && player is Monster || fixerCanPickUp && player is Fixer) {
+          // we tell every client that we picked this item up
+          // the master client will decide its fate
           RaiseEvent('p', true, driver.EntityID);
+
+          // local update
+          gameObject.SetActive(false);
         }
       }
     }
 
     void Update(){
       if (ownerId != 0){
+        // a new owner
+        // set values
+        var driver = EntityManager.Entity<BuilderDriver>(ownerId);
+        var item = ItemFactory.SelectByName[itemType](driver.gameObject);
+        driver.player.Items.Add(item);
         gameObject.SetActive(false);
       }
     }
@@ -40,10 +50,8 @@ namespace Code.Runtime.Game{
       // no owner
       // only master can decide who picks it up
       if (NetworkManager.isMaster && ownerId == 0){
+        // everyone will get this message change
         ownerId = ownerClaimingPickup;
-        var driver = EntityManager.Entity<BuilderDriver>(ownerId);
-        var item = ItemFactory.SelectByName[itemType](driver.gameObject);
-        driver.player.Items.Add(item);
       }
     }
   }

@@ -236,9 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03452a2371e2e144b927515396c969da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityID: 1001
+  authorityID: -1
   startingHealth: 150
   maxHealth: 200
-  name: Test Structure 2
+  _currentHealth: 0
 --- !u!135 &498660925
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -465,7 +467,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.3563156e-19, y: 0, z: 7.365175e+31, w: 1.9618e-41}
+  m_BoundingSphereOverride: {x: NaN, y: 958506.5, z: NaN, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -786,6 +788,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7511821896156814096, guid: c5d7dd9776485de4ea000324666a1fb5,
+        type: 3}
+      propertyPath: EntityID
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7511821896156814103, guid: c5d7dd9776485de4ea000324666a1fb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -858,7 +865,7 @@ PrefabInstance:
     - target: {fileID: 7548246960032595696, guid: f257fb1d3352e184ba1bcac82818b702,
         type: 3}
       propertyPath: m_Name
-      value: Pickup
+      value: Mortar Pickup
       objectReference: {fileID: 0}
     - target: {fileID: 7548246960032595699, guid: f257fb1d3352e184ba1bcac82818b702,
         type: 3}
