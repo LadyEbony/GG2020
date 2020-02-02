@@ -74,25 +74,28 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
     switch (gameManager.currentGameState)
     {
       case GameManager.GameState.Playing:var steering = GameHelper.GetDirectionInput;
-        nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
-        position = transform.position;
-        lineRenderer.SetPositions(new []
+        if (player.IsAlive)
         {
-          gameObject.transform.position,
-          gameObject.transform.position + gameObject.transform.forward * player.currentRange
-        });
-        RaycastHit hit;
-        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, player.currentRange);
-        if (hit.rigidbody != null)
-        {
-          if (hit.rigidbody.CompareTag("Structure"))
+          nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
+          position = transform.position;
+          lineRenderer.SetPositions(new []
           {
-            player.Target = hit.rigidbody.gameObject.GetComponent<Structure>();
+            gameObject.transform.position,
+            gameObject.transform.position + gameObject.transform.forward * player.currentRange
+          });
+          RaycastHit hit;
+          Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, player.currentRange);
+          if (hit.rigidbody != null)
+          {
+            if (hit.rigidbody.CompareTag("Structure"))
+            {
+              player.Target = hit.rigidbody.gameObject.GetComponent<Structure>();
+            }
           }
-        }
-        else
-        {
-          player.Target = null;
+          else
+          {
+            player.Target = null;
+          }
         }
         break;
     }

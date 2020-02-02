@@ -26,6 +26,8 @@ namespace Code.Runtime.Game
 
         public float respawnTime;
 
+        public bool IsAlive => currentState == PlayerState.Playing;
+        
         private float elapsedDeathTime;
         
         public enum PlayerState
@@ -86,7 +88,8 @@ namespace Code.Runtime.Game
 
         void Die()
         {
-            
+            currentState = PlayerState.Waiting;
+            elapsedDeathTime = 0;
         }
 
         void PlayingActions()
@@ -159,6 +162,7 @@ namespace Code.Runtime.Game
             if (spawnPoint.HasValue)
             {
                 gameObject.transform.position = spawnPoint.Value;
+                currentHealth = maxHealth;
                 currentState = PlayerState.Playing;
             }
             else
