@@ -68,7 +68,7 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
   /// </summary>
   void LocalUpdate(){
     // movement
-    var steering = GameHelper.GetDirectionInput;
+    Vector3 steering = GameHelper.GetDirectionInput;
     nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
     position = transform.position;
     lineRenderer.SetPositions(new []
