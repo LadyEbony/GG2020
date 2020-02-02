@@ -6,6 +6,7 @@ namespace Code.Runtime.Game.Interfaces
     {
         public void Start()
         {
+            base.Start();
             DamageItem meleeAttack = ItemFactory.MeleeAttack(gameObject);
             Items.Add(meleeAttack);
             item = meleeAttack;

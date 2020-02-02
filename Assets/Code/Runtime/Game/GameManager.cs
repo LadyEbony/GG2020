@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Code.Runtime.Game;
 using Code.Runtime.Game.Interfaces;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> structures;
     public List<Structure> structureScripts;
     Dictionary<GameObject, GameObject> HealthBars;
+    private List<SpawnPoint> builderSpawns;
+    private List<SpawnPoint> kaijuSpawns;
 
     public void Start()
     {
@@ -28,13 +31,26 @@ public class GameManager : MonoBehaviour
         {
             HealthBars.Add(structure, Instantiate(HealthBarPrefab,HealthBarPanel.transform));
         }
+
+        builderSpawns = new List<SpawnPoint>();
+        kaijuSpawns = new List<SpawnPoint>();
+        foreach (var spawnPoint in GameObject.FindObjectsOfType<SpawnPoint>())
+        {
+            if (spawnPoint.CompareTag("BuilderSpawn"))
+            {
+                builderSpawns.Add(spawnPoint);
+            }
+            else if (spawnPoint.CompareTag("KaijuSpawn"))
+            {
+                kaijuSpawns.Add(spawnPoint);
+            }
+        }
     }
 
     public void Update()
     {
         DisplayHealthBars();
     }
-
     public void SelectDestroyerPlayer()
     {
         Debug.Log("Joined kaiju team");
@@ -90,5 +106,24 @@ public class GameManager : MonoBehaviour
     private bool IsScreenPointOnScreen(Vector3 point)
     {
         return point.x > 0f && point.x < 1f && point.y > 0f && point.y < 1f && point.z > 0f;
+    }
+    
+    public Vector3? GetAvailableSpawnPoint(Player player)
+    {
+        SpawnPoint[] availableSpawns = new SpawnPoint[0];
+        if (player is Fixer)
+        {
+            availableSpawns = builderSpawns.Where(s => !s.inUse).ToArray();
+        }
+        else if(player is Monster)
+        {
+            availableSpawns = kaijuSpawns.Where(s => !s.inUse).ToArray();
+        }
+
+        if (availableSpawns.Length > 0)
+        {
+            return availableSpawns[Random.Range(0, availableSpawns.Length)].Position;
+        }
+        return null;
     }
 }

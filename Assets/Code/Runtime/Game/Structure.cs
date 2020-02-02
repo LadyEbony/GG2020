@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Code.Runtime.Game.Interfaces;
-using EntityNetwork;
-using UnityEngine.UI; 
+using EntityNetwork; 
 
 public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAutoRegister, IMasterOwnsUnclaimed, IRepairable, IDamageable, IShowHealth {
   
@@ -74,5 +74,8 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
     public void ShowHealth(GameObject HealthBar)
     {
         Slider bar = HealthBar.GetComponent<Slider>();
+        bar.minValue = 0;
+        bar.maxValue = maxHealth;
+        bar.value = currentHealth;
     }
 }
