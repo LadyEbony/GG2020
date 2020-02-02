@@ -16,15 +16,15 @@ namespace Code.Runtime.Game
                 timeSinceLastUse = TimeSpan.Zero;
                 if (target is IDamageable)
                 {
-                    if ((target.GetTarget().transform.position - gameObject.transform.position).magnitude < range)
-                    {
+                    //if ((target.GetTarget().transform.position - gameObject.transform.position).magnitude < range)
+                    //{
                         (target as IDamageable).Damage(baseDamageStrength);
                         Debug.Log($"Damaging {target} for {baseDamageStrength}");
-                    }
-                    else
-                    {
-                        Debug.Log($"{target} is out of range");
-                    }
+                    //}
+                    //else
+                    //{
+                    //    Debug.Log($"{target} is out of range");
+                    //}
                 }
             }
         }
