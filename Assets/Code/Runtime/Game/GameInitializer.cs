@@ -19,6 +19,8 @@ public class GameInitializer : MonoBehaviour {
       eb.authorityID = -1;
       eb.Register();
 
+      CameraThird.Instance.player = gobj.transform;
+
       yield break;
     }
 
@@ -32,6 +34,9 @@ public class GameInitializer : MonoBehaviour {
       eb.EntityID = i;
       eb.authorityID = p.ID;
       eb.Register();
+
+      if (p.ID == PlayerProperties.localPlayer.ID)
+        CameraThird.Instance.player = gobj.transform;
 
       i += counter;
     }

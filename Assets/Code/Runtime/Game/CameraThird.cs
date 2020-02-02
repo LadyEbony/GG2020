@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraThird : MonoBehaviour
-{
+public class CameraThird : MonoBehaviour {
+
+  public static CameraThird Instance{ get; private set; }
+
   [Header("Player Tracking")]
   public Transform player;                      // player transform to track
   public float cameraDistance = 3f;             // distance from player
@@ -21,6 +23,9 @@ public class CameraThird : MonoBehaviour
   private float rotX = 0f;                      // the current pitch
   private float rotY = 0f;                      // the current yaw
 
+  private void Awake() {
+    Instance = this;
+  }
 
   private void Start()
   {
