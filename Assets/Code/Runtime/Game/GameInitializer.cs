@@ -13,7 +13,7 @@ public class GameInitializer : MonoBehaviour {
     while (!PlayerProperties.GetAllGameStatus()) yield return null;
 
     if (!NetworkManager.inRoom){
-      var gobj = Instantiate(builderPrefab);
+      var gobj = Instantiate(kaijuPrefab);
       var eb = gobj.GetComponent<EntityBase>();
       eb.EntityID = 1;
       eb.authorityID = -1;

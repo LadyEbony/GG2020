@@ -108,7 +108,7 @@ PrefabInstance:
     - target: {fileID: 3436661479763944954, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
         type: 3}
       propertyPath: m_Name
-      value: Player (Kaiju)
+      value: Player (Kaiju) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3436661479763944954, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
         type: 3}
@@ -124,6 +124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944955, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: cameraDistance
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4949909444288298591, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
         type: 3}

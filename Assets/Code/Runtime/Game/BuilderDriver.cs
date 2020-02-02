@@ -65,7 +65,6 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
   }
   // Update is called once per frame
   void Update(){
-    Debug.Log(PlayerProperties.localPlayer.ID);
     if (isMine){
       LocalUpdate();
     } else {
@@ -80,7 +79,6 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
     // movement
     Vector3 steering = GameHelper.GetDirectionInput;
     nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
-    Debug.Log(steering);
     //position = transform.position;
     lineRenderer.SetPositions(new []
     {
