@@ -48,7 +48,7 @@ public class CharacterSelect : MonoBehaviour {
   }
 
   public void LoadGame(){
-    SceneManager.LoadScene("SampleScene");
+    SceneManager.LoadScene("Player Prefab Test");
   }
 
   private void OnEnable() {

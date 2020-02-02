@@ -26,6 +26,8 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
 
   private LineRenderer lineRenderer;
   private float currentRange;
+  
+  public GameManager gameManager;
 
   public enum PlayerTypes
   {
@@ -40,6 +42,7 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
 
   void Start()
   {
+    gameManager = GameObject.FindObjectOfType<GameManager>();
     switch (playerType)
     {
       case PlayerTypes.Fixer:
@@ -77,26 +80,36 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
   /// </summary>
   void LocalUpdate(){
     // movement
-    Vector3 steering = GameHelper.GetDirectionInput;
-    nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
-    //position = transform.position;
-    lineRenderer.SetPositions(new []
+    switch (gameManager.currentGameState)
     {
-      gameObject.transform.position,
-      gameObject.transform.position + gameObject.transform.forward * player.currentRange
-    });
-    RaycastHit hit;
-    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, player.currentRange))
-    {
-      if (hit.transform.CompareTag("Structure"))
-      {
-        player.Target = hit.transform.GetComponent<Structure>();
-      }
+      case GameManager.GameState.Playing:
+        if (player.IsAlive)
+        {
+          var steering = GameHelper.GetDirectionInput;
+          nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
+          position = transform.position;
+          lineRenderer.SetPositions(new []
+          {
+            gameObject.transform.position,
+            gameObject.transform.position + gameObject.transform.forward * player.currentRange
+          });
+          RaycastHit hit;
+          Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, player.currentRange);
+          if (hit.rigidbody != null)
+          {
+            if (hit.rigidbody.CompareTag("Structure"))
+            {
+              player.Target = hit.rigidbody.gameObject.GetComponent<Structure>();
+            }
+          }
+          else
+          {
+            player.Target = null;
+          }
+        }
+        break;
     }
-    else
-    {
-      player.Target = null;
-    }
+    
   }
 
   [NetEvent('a')]

@@ -911,6 +911,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TeamSelectionPanel: {fileID: 0}
+  structures: []
+  currentGameState: 0
+  waitingTime: 5
+  playingTime: 15
+  finishTime: 30
+  buildingHealthPercentageForBuilderWin: 70
 --- !u!4 &1725977007
 Transform:
   m_ObjectHideFlags: 0

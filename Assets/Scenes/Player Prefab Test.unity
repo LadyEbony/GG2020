@@ -157,6 +157,11 @@ MonoBehaviour:
   HealthBarPrefab: {fileID: 0}
   structures: []
   structureScripts: []
+  currentGameState: 0
+  waitingTime: 0
+  playingTime: 100
+  finishTime: 0
+  buildingHealthPercentageForBuilderWin: 0
 --- !u!4 &6756915
 Transform:
   m_ObjectHideFlags: 0
@@ -305,6 +310,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8397950358197448299, guid: ad49179d7bafd344d948ab9643c4fdad,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 925392912, guid: ad49179d7bafd344d948ab9643c4fdad, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -326,6 +336,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
         type: 2}
+    - target: {fileID: 925392913, guid: ad49179d7bafd344d948ab9643c4fdad, type: 3}
+      propertyPath: m_fontSize
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129360323, guid: ad49179d7bafd344d948ab9643c4fdad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2129360327, guid: ad49179d7bafd344d948ab9643c4fdad, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -385,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 5367125707474810989, guid: ad49179d7bafd344d948ab9643c4fdad,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad49179d7bafd344d948ab9643c4fdad, type: 3}
@@ -2209,7 +2227,7 @@ GameObject:
   - component: {fileID: 2064475919}
   - component: {fileID: 2064475918}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Initializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
