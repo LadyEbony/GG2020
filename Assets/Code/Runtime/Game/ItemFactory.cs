@@ -1,10 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Code.Runtime.Game
 {
     public static class ItemFactory
     {
+
+        public enum ItemType{ Mortar, Hammer, Nailgun, Melee, Ranged}
+
+        public static Dictionary<ItemType, System.Func<GameObject, Item>> SelectByName = new Dictionary<ItemType, Func<GameObject, Item>>(){
+          { ItemType.Mortar, g => Mortar(g) },
+          { ItemType.Hammer, g => Hammer(g) },
+          { ItemType.Nailgun, g => Nailgun(g) },
+          { ItemType.Melee, g => MeleeAttack(g) },
+          { ItemType.Ranged, g => RangedAttack(g) },
+        };
+
         public static RepairItem Mortar(GameObject owner)
         {
             RepairItem mortar = owner.AddComponent<RepairItem>();
@@ -54,23 +66,5 @@ namespace Code.Runtime.Game
             return attack;
         }
 
-        public static Item SelectByName(GameObject owner, string name)
-        {
-            switch (name)
-            {
-                case "Hammer":
-                    return Hammer(owner);
-                case "Nailgun":
-                    return Nailgun(owner);
-                case "Mortar":
-                    return Mortar(owner);
-                case "Melee Attack":
-                    return MeleeAttack(owner);
-                case "Ranged Attack":
-                    return RangedAttack(owner);
-                default:
-                    return null;
-            }
-        }
     }
 }

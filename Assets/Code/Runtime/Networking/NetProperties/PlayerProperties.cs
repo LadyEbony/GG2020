@@ -138,6 +138,8 @@ public static class PlayerProperties  {
   /// </summary>
   public static readonly PlayerPropertyEntry<int> playerResponse = new PlayerPropertyEntry<int>("pr");
 
+
+
   public static Player localPlayer {
      get {
         return NetworkManager.net.LocalPlayer;

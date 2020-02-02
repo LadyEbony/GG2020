@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using EntityNetwork;
 
-public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAutoRegister, IMasterOwnsUnclaimed {
+public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAutoRegister, IMasterOwnsUnclaimed {
 
   // Any variable with [NetVar]
   // Will be sent to all clients based on the parameters
@@ -22,14 +22,9 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
 
   [Header("Components")]
   public NavMeshAgent nva;
-
-  [Header("Helds")]
-  public Heldable item;
-
   public Player player;
 
   private LineRenderer lineRenderer;
-
   private float currentRange;
 
   public enum PlayerTypes
@@ -94,6 +89,11 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IAuto
     {
       player.Target = null;
     }
+  }
+
+  [NetEvent('a')]
+  void DoSomething(){
+    // do something
   }
 
   /// <summary>
