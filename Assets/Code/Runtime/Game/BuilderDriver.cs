@@ -77,12 +77,11 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
       gameObject.transform.position + gameObject.transform.forward * player.currentRange
     });
     RaycastHit hit;
-    Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, player.currentRange);
-    if (hit.rigidbody != null)
+    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, player.currentRange))
     {
-      if (hit.rigidbody.CompareTag("Structure"))
+      if (hit.transform.CompareTag("Structure"))
       {
-        player.Target = hit.rigidbody.gameObject.GetComponent<Structure>();
+        player.Target = hit.transform.GetComponent<Structure>();
       }
     }
     else

@@ -578,6 +578,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1017594536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4949909444288298591, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3436661478387718618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247636213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2129360323, guid: ad49179d7bafd344d948ab9643c4fdad,
@@ -597,12 +603,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1262376773 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3436661478387718618}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1415285070
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,13 +744,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad030c80d5b86c408d78dc618d149cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1262376773}
+  player: {fileID: 1017594536}
   cameraDistance: 7
   smoothTime: 0.3
-  minDistanceFromWall: 0.0625
+  minDistanceFromWall: 1
   cameraLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   pitchClamp: 80
   pitchSensitivity: 5
   yawSensitivity: 5
@@ -826,14 +826,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3436661479763944952, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3436661479763944952, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
-        type: 3}
-      propertyPath: m_AngularSpeed
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
@@ -899,11 +893,6 @@ PrefabInstance:
     - target: {fileID: 3436661479763944955, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
         type: 3}
       propertyPath: EntityID
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3436661480136457599, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
