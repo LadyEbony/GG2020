@@ -11,7 +11,7 @@ public class NetworkManagerDebug : MonoBehaviour {
     if (NetworkManager.net != null) {
       currentState = NetworkManager.net.State;
 
-      GetComponentInChildren<TMPro.TextMeshProUGUI>().text = currentState.ToString();
+      //GetComponentInChildren<TMPro.TextMeshProUGUI>().text = currentState.ToString();
     }
   }
 }
