@@ -59,7 +59,7 @@ namespace Code.Runtime.Game
         {
             currentRange = 0;
             currentState = PlayerState.Waiting;
-            elapsedDeathTime = 0;
+            elapsedDeathTime = respawnTime;
             gameManager = GameObject.FindObjectOfType<GameManager>();
             if (gameManager == null)
             {
@@ -68,6 +68,28 @@ namespace Code.Runtime.Game
         }
 
         public void Update()
+        {
+            switch (gameManager.currentGameState)
+            {
+                case GameManager.GameState.Waiting:
+                    break;
+                case GameManager.GameState.Playing:
+                    PlayingActions();
+                    break;
+                case GameManager.GameState.Finish:
+                    break;
+            }
+
+            // items
+        
+        }
+
+        void Die()
+        {
+            
+        }
+
+        void PlayingActions()
         {
             switch (currentState)
             {
@@ -129,13 +151,6 @@ namespace Code.Runtime.Game
                     }
                     break;
             }
-            // items
-        
-        }
-
-        void Die()
-        {
-            
         }
 
         void Respawn()
