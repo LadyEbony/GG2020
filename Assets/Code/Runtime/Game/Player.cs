@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Game
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IShowHealth
     {
         public List<Heldable> Items = new List<Heldable>();
 
@@ -20,6 +20,11 @@ namespace Code.Runtime.Game
         public BuilderDriver driver;
 
         public float currentRange;
+
+        public void ShowHealth(GameObject HealthBar)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Start()
         {
