@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     private List<SpawnPoint> builderSpawns;
     private List<SpawnPoint> kaijuSpawns;
     [HideInInspector]
-    public List<Structure> structures;
     public GameState currentGameState;
 
     public float waitingTime;
@@ -67,12 +66,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        structures = FindObjectsOfType<Structure>().ToList();
-    }
-
-    public void Update()
-    {
-        DisplayHealthBars();
+        structureScripts = FindObjectsOfType<Structure>().ToList();
     }
     public void SelectDestroyerPlayer()
     {
@@ -152,6 +146,7 @@ public class GameManager : MonoBehaviour
     
     public void Update()
     {
+        DisplayHealthBars();
         elapsedStateTime += Time.deltaTime;
         switch (currentGameState)
         {
@@ -183,8 +178,8 @@ public class GameManager : MonoBehaviour
 
     void DetermineWinner()
     {
-        var structuresCurrentHealth = structures.Sum(s => s.currentHealth);
-        var structuresTotalHealth = structures.Sum(s => s.maxHealth);
+        var structuresCurrentHealth = structureScripts.Sum(s => s.currentHealth);
+        var structuresTotalHealth = structureScripts.Sum(s => s.maxHealth);
         var overallBuildingHealth = 100 * (float)structuresCurrentHealth / structuresTotalHealth;
         if (overallBuildingHealth > buildingHealthPercentageForBuilderWin)
         {

@@ -73,9 +73,10 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize, IEarl
     // movement
     switch (gameManager.currentGameState)
     {
-      case GameManager.GameState.Playing:var steering = GameHelper.GetDirectionInput;
+      case GameManager.GameState.Playing:
         if (player.IsAlive)
         {
+          var steering = GameHelper.GetDirectionInput;
           nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);
           position = transform.position;
           lineRenderer.SetPositions(new []
