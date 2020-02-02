@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Code.Runtime.Game.Interfaces;
 using EntityNetwork; 
 
-public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAutoRegister, IMasterOwnsUnclaimed, IRepairable, IDamageable, IShowHealth {
+public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IMasterOwnsUnclaimed, IRepairable, IDamageable, IShowHealth {
   
   [Header("Stuff")]
   public Transform shakeContainer;
@@ -48,6 +48,7 @@ public class Structure : EntityBase, IAutoSerialize, IAutoDeserialize, IEarlyAut
 
   // Start is called before the first frame update
   void Start() {
+    Register();
     currentHealth = startingHealth;
   }
 

@@ -13,6 +13,8 @@ public class GameInitializer : MonoBehaviour {
     while (!PlayerProperties.GetAllGameStatus()) yield return null;
 
     if (!NetworkManager.inRoom){
+      PlayerProperties.CreatePlayerHashtable();
+
       var item = PlayerProperties.playerTeam.GetLocal() == 0 ? builderPrefab : kaijuPrefab;
       var gobj = Instantiate(item);
       var eb = gobj.GetComponent<EntityBase>();
