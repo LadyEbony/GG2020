@@ -168,6 +168,80 @@ MonoBehaviour:
   builderPrefab: {fileID: 3436661479763944954, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
     type: 3}
   kaijuPrefab: {fileID: 0}
+--- !u!1001 &61169326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944953, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944954, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436661479763944955, guid: 2b3b8f4ff20c3784cb00b7d82d19690e,
+        type: 3}
+      propertyPath: cameraDistance
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b3b8f4ff20c3784cb00b7d82d19690e, type: 3}
 --- !u!1001 &114868277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,6 +614,9 @@ MonoBehaviour:
   brokenModel: {fileID: 0}
   damageShakeAmount: 0
   damageShakeDuration: 0
+  repairAudio: {fileID: 0}
+  damageAudio: {fileID: 0}
+  deathAudio: {fileID: 0}
   startingHealth: 150
   maxHealth: 200
   _currentHealth: 0
@@ -1489,7 +1566,7 @@ MonoBehaviour:
   cameraLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  pitchClamp: 80
+  pitchClamp: 45
   pitchSensitivity: 5
   yawSensitivity: 5
 --- !u!81 &1513071212
@@ -1992,6 +2069,9 @@ MonoBehaviour:
   brokenModel: {fileID: 6984291444236640785}
   damageShakeAmount: 2
   damageShakeDuration: 2
+  repairAudio: {fileID: 0}
+  damageAudio: {fileID: 0}
+  deathAudio: {fileID: 0}
   startingHealth: 0
   maxHealth: 100
   _currentHealth: 0
@@ -4164,6 +4244,9 @@ MonoBehaviour:
   brokenModel: {fileID: 6984291444236640785}
   damageShakeAmount: 1
   damageShakeDuration: 0.25
+  repairAudio: {fileID: 0}
+  damageAudio: {fileID: 0}
+  deathAudio: {fileID: 0}
   startingHealth: 0
   maxHealth: 100
   _currentHealth: 0

@@ -34,7 +34,10 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
   }
 
   public PlayerTypes playerType;
-  
+
+  [Header("Camera")]
+  public float cameraDistance;
+
   void Start()
   {
     switch (playerType)
@@ -52,6 +55,12 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
     lineRenderer.startColor = Color.white;
     lineRenderer.endColor = Color.red;
     lineRenderer.positionCount = 2;
+
+    if (isMine){
+      var c = CameraThird.Instance;
+      c.player = transform.Find("Camera Target");
+      c.cameraDistance = cameraDistance;
+    }
     
   }
   // Update is called once per frame
