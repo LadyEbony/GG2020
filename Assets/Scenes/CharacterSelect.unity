@@ -1112,13 +1112,13 @@ MonoBehaviour:
   - name: Builder
     outlineColor: {r: 0, g: 1, b: 0, a: 1}
     innerColor: {r: 0, g: 0.40392157, b: 0, a: 1}
-    fullSprite: {fileID: 0}
-    headSprite: {fileID: 0}
+    fullSprite: {fileID: 21300000, guid: 980748c7571049c48b60355bd9fabff1, type: 3}
+    headSprite: {fileID: 21300000, guid: 980748c7571049c48b60355bd9fabff1, type: 3}
   - name: Kaiju
     outlineColor: {r: 1, g: 0, b: 0, a: 1}
     innerColor: {r: 0.30588236, g: 0, b: 0, a: 1}
-    fullSprite: {fileID: 0}
-    headSprite: {fileID: 0}
+    fullSprite: {fileID: 21300000, guid: 655c39d113ac1214cb86e74afc9e8afd, type: 3}
+    headSprite: {fileID: 21300000, guid: 655c39d113ac1214cb86e74afc9e8afd, type: 3}
 --- !u!4 &413108150
 Transform:
   m_ObjectHideFlags: 0
@@ -3680,7 +3680,7 @@ RectTransform:
   m_GameObject: {fileID: 1965040530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.25, y: 2.25, z: 2.25}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 168240329}
   m_RootOrder: 0
