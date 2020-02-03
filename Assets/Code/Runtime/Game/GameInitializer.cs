@@ -26,7 +26,7 @@ public class GameInitializer : MonoBehaviour {
     }
 
     var i = 1;
-    var counter = 10;
+    var counter = 5;
     var players = NetworkManager.getSortedPlayers;
     foreach(var p in players){
       var item = PlayerProperties.playerTeam.Get(p) == 0 ? builderPrefab : kaijuPrefab;

@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03452a2371e2e144b927515396c969da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityID: 11111111
+  EntityID: 1009
   authorityID: -1
   shakeContainer: {fileID: 399375283}
   HealthBarOffset: {fileID: 682046568}
@@ -3241,7 +3241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03452a2371e2e144b927515396c969da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityID: 11111111
+  EntityID: 1011
   authorityID: -1
   shakeContainer: {fileID: 375935508}
   HealthBarOffset: {fileID: 1493708913}
@@ -3619,7 +3619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03452a2371e2e144b927515396c969da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityID: 11111111
+  EntityID: 1012
   authorityID: -1
   shakeContainer: {fileID: 1488443324}
   HealthBarOffset: {fileID: 1939125771}
@@ -11390,7 +11390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03452a2371e2e144b927515396c969da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityID: 11111111
+  EntityID: 1013
   authorityID: -1
   shakeContainer: {fileID: 1847808639}
   HealthBarOffset: {fileID: 1201215948}
@@ -20412,7 +20412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03452a2371e2e144b927515396c969da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityID: 11111111
+  EntityID: 1010
   authorityID: -1
   shakeContainer: {fileID: 13732414}
   HealthBarOffset: {fileID: 1163471434}
@@ -79617,7 +79617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03452a2371e2e144b927515396c969da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityID: 11111111
+  EntityID: 1008
   authorityID: -1
   shakeContainer: {fileID: 6638914542307878161}
   HealthBarOffset: {fileID: 1658616308672104470}
