@@ -83,7 +83,7 @@ public class BuilderDriver : EntityBase, IAutoSerialize, IAutoDeserialize {
     switch (gameManager.currentGameState)
     {
       case GameManager.GameState.Playing:
-        if (player.IsAlive)
+        if (player.IsAlive && !player.animator.GetBool("Attack"))
         {
           var steering = GameHelper.GetDirectionInput;
           nva.velocity = Vector3.MoveTowards(nva.velocity, nva.speed * steering, nva.acceleration * Time.deltaTime);

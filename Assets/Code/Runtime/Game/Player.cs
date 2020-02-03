@@ -26,6 +26,7 @@ namespace Code.Runtime.Game
         public float respawnTime;
 
         public bool IsAlive => currentState == PlayerState.Playing;
+        public Animator animator;
         
         private float elapsedDeathTime;
         
@@ -36,6 +37,10 @@ namespace Code.Runtime.Game
         }
 
         private PlayerState currentState;
+
+        [SerializeField]
+        [EntityBase.NetVar('a', false, true, 100)]
+        public bool attacking = false;
         
         [SerializeField]
         [EntityBase.NetVar('c', true, false, 100)]
@@ -54,6 +59,7 @@ namespace Code.Runtime.Game
                 }
             }
         }
+        
         public int maxHealth;
 
         public void Start()
@@ -62,6 +68,7 @@ namespace Code.Runtime.Game
             currentState = PlayerState.Waiting;
             elapsedDeathTime = respawnTime;
             gameManager = GameObject.FindObjectOfType<GameManager>();
+            animator = GetComponentInChildren<Animator>();
             if (gameManager == null)
             {
                 Debug.Log("Cannot find game manager");
@@ -121,6 +128,7 @@ namespace Code.Runtime.Game
                         {
                             item?.Use();
                         }
+                        attacking = true;
                     }
 
                     if (Input.mouseScrollDelta.y > 0)
@@ -150,6 +158,11 @@ namespace Code.Runtime.Game
                                 currentRange = (item as IRanged).GetRange();
                             }
                         }
+                    }
+                    if (attacking)
+                    {
+                        animator.SetTrigger("Attack");
+                        attacking = false;
                     }
                     break;
             }

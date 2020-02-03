@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameInitializer : MonoBehaviour {
 
   public GameObject builderPrefab, kaijuPrefab;
+  public bool startAsBuilder;
 
   IEnumerator Start(){
     PlayerProperties.gameStatus.SetLocal(true);
@@ -15,7 +16,7 @@ public class GameInitializer : MonoBehaviour {
     if (!NetworkManager.inRoom){
       PlayerProperties.CreatePlayerHashtable();
 
-      var item = PlayerProperties.playerTeam.GetLocal() == 0 ? builderPrefab : kaijuPrefab;
+      var item = startAsBuilder ? builderPrefab : kaijuPrefab;
       var gobj = Instantiate(item);
       var eb = gobj.GetComponent<EntityBase>();
       eb.EntityID = 1;
